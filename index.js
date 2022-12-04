@@ -1,22 +1,28 @@
 /**
- * Slides up the element with animation
- * param {HTMLElement} target
- * param {Number} duration
+ * Slides an element up using a CSS transition.
+ * @param {HTMLElement} target The element to slide up.
+ * @param {number} duration The duration of the transition in milliseconds (defaults to 300ms).
  */
-const slideUp = (target, duration = 300) => {
-  if (!(target instanceof HTMLElement)) return;
+function slideUp(target, duration) {
+  if (!(target instanceof HTMLElement)) {
+    throw new TypeError("The target must be an HTMLElement.");
+  }
+
+  duration = duration && typeof duration == "number" ? duration : 300;
   target.style.transitionProperty = "height, margin, padding";
   target.style.transitionDuration = duration + "ms";
   target.style.boxSizing = "border-box";
   target.style.height = target.offsetHeight + "px";
   target.offsetHeight;
   target.style.overflow = "hidden";
-  target.style.height = 0;
-  target.style.paddingTop = 0;
-  target.style.paddingBottom = 0;
-  target.style.marginTop = 0;
-  target.style.marginBottom = 0;
-  window.setTimeout(() => {
+
+  target.style.height = "0";
+  target.style.paddingTop = "0";
+  target.style.paddingBottom = "0";
+  target.style.marginTop = "0";
+  target.style.marginBottom = "0";
+
+  setTimeout(function () {
     target.style.display = "none";
     target.style.removeProperty("height");
     target.style.removeProperty("padding-top");
@@ -27,30 +33,36 @@ const slideUp = (target, duration = 300) => {
     target.style.removeProperty("transition-duration");
     target.style.removeProperty("transition-property");
   }, duration);
-};
+}
 
 /**
- * Slides down the element with animation
- * param {HTMLElement} target
- * param {Number} duration
- * param {String} displayProp
+ * Slides down the the target element
+ * @param {HTMLElement} target The element to slide down.
+ * @param {number} duration The duration of the transition in milliseconds (defaults to 300ms).
+ * @param {string} displayProp The CSS display property to use when animating the element.
  */
-const slideDown = (target, duration = 300, displayProp) => {
-  if (!(target instanceof HTMLElement)) return;
-  target.style.removeProperty("display");
-  let display = window.getComputedStyle(target).display;
-  let displayCSSProperty = displayProp ? displayProp.trim() : "block";
+function slideDown(target, duration, displayProp) {
+  if (!(target instanceof HTMLElement)) {
+    throw new TypeError("The target must be an HTMLElement.");
+  }
 
+  duration = duration && typeof duration == "number" ? duration : 300;
+  let display = window.getComputedStyle(target).display;
   if (display !== "none") return;
+  target.style.removeProperty("display");
+  displayProp = displayProp || "block";
+
+  target.style.display = displayProp.toString();
   let height = target.offsetHeight;
-  target.style.display = displayCSSProperty;
   target.style.overflow = "hidden";
-  target.style.height = 0;
-  target.style.paddingTop = 0;
-  target.style.paddingBottom = 0;
-  target.style.marginTop = 0;
-  target.style.marginBottom = 0;
+
+  target.style.height = "0";
+  target.style.paddingTop = "0";
+  target.style.paddingBottom = "0";
+  target.style.marginTop = "0";
+  target.style.marginBottom = "0";
   target.offsetHeight;
+
   target.style.boxSizing = "border-box";
   target.style.transitionProperty = "height, margin, padding";
   target.style.transitionDuration = duration + "ms";
@@ -60,27 +72,32 @@ const slideDown = (target, duration = 300, displayProp) => {
   target.style.removeProperty("margin-top");
   target.style.removeProperty("margin-bottom");
 
-  window.setTimeout(() => {
+  setTimeout(function () {
     target.style.removeProperty("height");
     target.style.removeProperty("overflow");
     target.style.removeProperty("transition-duration");
     target.style.removeProperty("transition-property");
   }, duration);
-};
+}
 
 /**
- * Toggles the element checking element condition with animation
- * param {HTMLElement} target
- * param {Number} duration
- * param {String} display CSS property when element is slideDown
+ * Toggles the visibility of an element by sliding it up or down.
+ * @param {HTMLElement} target The element to slide up or down.
+ * @param {number} duration  The duration of the slide transition in milliseconds (defaults to 300ms).
+ * @param {string} displayProp The CSS display property to use when sliding down the element (optional, defaults to `"block"`).
  */
-const slideToggle = (target, duration = 300, displayProp) => {
-  if (!(target instanceof HTMLElement)) return;
+function slideToggle(target, duration, displayProp) {
+  if (!(target instanceof HTMLElement)) {
+    throw new TypeError("The target must be an HTMLElement.");
+  }
+
+  duration = duration && typeof duration == "number" ? duration : 300;
+
   if (window.getComputedStyle(target).display === "none") {
     return slideDown(target, duration, displayProp);
   } else {
     return slideUp(target, duration);
   }
-};
+}
 
 export { slideUp, slideDown, slideToggle };

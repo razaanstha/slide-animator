@@ -1,9 +1,9 @@
 /**
  * Slides an element up using a CSS transition.
- * @param {HTMLElement} target The element to slide up.
- * @param {number} duration The duration of the transition in milliseconds (defaults to 300ms).
+ * @param target The element to slide up.
+ * @param duration The duration of the transition in milliseconds (defaults to 300ms).
  */
-function slideUp(target, duration) {
+function slideUp(target: HTMLElement, duration?: number): void {
   if (!(target instanceof HTMLElement)) {
     throw new TypeError("The target must be an HTMLElement.");
   }
@@ -37,11 +37,15 @@ function slideUp(target, duration) {
 
 /**
  * Slides down the the target element
- * @param {HTMLElement} target The element to slide down.
- * @param {number} duration The duration of the transition in milliseconds (defaults to 300ms).
- * @param {string} displayProp The CSS display property to use when animating the element.
+ * @param target The element to slide down.
+ * @param duration The duration of the transition in milliseconds (defaults to 300ms).
+ * @param displayProp The CSS display property to use when animating the element.
  */
-function slideDown(target, duration, displayProp) {
+function slideDown(
+  target: HTMLElement,
+  duration?: number,
+  displayProp?: string
+): void {
   if (!(target instanceof HTMLElement)) {
     throw new TypeError("The target must be an HTMLElement.");
   }
@@ -86,7 +90,11 @@ function slideDown(target, duration, displayProp) {
  * @param {number} duration  The duration of the slide transition in milliseconds (defaults to 300ms).
  * @param {string} displayProp The CSS display property to use when sliding down the element (optional, defaults to `"block"`).
  */
-function slideToggle(target, duration, displayProp) {
+function slideToggle(
+  target: HTMLElement,
+  duration?: number,
+  displayProp?: string
+): void {
   if (!(target instanceof HTMLElement)) {
     throw new TypeError("The target must be an HTMLElement.");
   }

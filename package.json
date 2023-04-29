@@ -1,24 +1,27 @@
 {
-    "name": "slide-animator",
-    "version": "1.0.1",
-    "description": "Slide Animator is a JavaScript module that helps with animating the sliding of HTML elements.",
-    "type": "module",
-    "main": "index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/rajanstha/slide-animator.git"
-    },
-    "keywords": [
-      "Animated Slide effects",
-      "slideUp",
-      "slideDown",
-      "slideToggle",
-      "jQuery slideUp, slideDown, slideToggle methods in vanilla JavaScript."
-    ],
-    "author": "Rajan Shrestha",
-    "license": "MIT"
+  "name": "slide-animator",
+  "version": "1.0.2",
+  "description": "Slide Animator is a JavaScript module that helps with animating the sliding of HTML elements.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rajanstha/slide-animator.git"
+  },
+  "keywords": [
+    "Animated Slide effects",
+    "slideUp",
+    "slideDown",
+    "slideToggle",
+    "jQuery slideUp, slideDown, slideToggle methods in vanilla JavaScript."
+  ],
+  "author": "Rajan Shrestha",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.4"
   }
-  
+}

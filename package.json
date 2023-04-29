@@ -1,7 +1,8 @@
 {
   "name": "slide-animator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Slide Animator is a JavaScript module that helps with animating the sliding of HTML elements.",
+  "type": "module",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
